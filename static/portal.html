@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Executive Portal</title>
+  <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Insurance Claims Processing System</p>
+        <h1>Executive Portal</h1>
+      </div>
+      <nav class="nav">
+        <button class="nav-btn active" data-target="executive-screen">Executive Screen</button>
+        <button class="nav-btn" data-target="processed-screen">Processed Claims</button>
+        <button class="nav-btn" data-target="dashboard-screen">Dashboard</button>
+        <a class="nav-btn" href="/">User Form</a>
+      </nav>
+    </header>
+
+    <main>
+      <section id="executive-screen" class="screen active">
+        <div class="panel">
+          <div class="panel-header">
+            <div>
+              <h2>Incoming Claims</h2>
+              <p>View all claims in the unprocessed database and process them in one click.</p>
+            </div>
+            <button id="process-all-btn" class="primary">Process All Claims</button>
+          </div>
+          <div id="incoming-message" class="message"></div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Claim ID</th>
+                  <th>Policy Type</th>
+                  <th>Name</th>
+                  <th>Age</th>
+                  <th>Amount</th>
+                  <th>Docs</th>
+                  <th>Extra Info</th>
+                </tr>
+              </thead>
+              <tbody id="incoming-table-body"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section id="processed-screen" class="screen">
+        <div class="panel">
+          <div class="panel-header processed-header">
+            <div>
+              <h2>Processed Claims</h2>
+              <p>Search, filter, update, or delete processed claims.</p>
+            </div>
+            <div class="search-area">
+              <input id="search-input" type="text" placeholder="Search claim ID" />
+              <button id="search-btn" class="secondary">Search</button>
+            </div>
+          </div>
+
+          <div class="filter-row">
+            <select id="decision-filter">
+              <option value="">All Decisions</option>
+              <option value="Approved">Approved</option>
+              <option value="Rejected">Rejected</option>
+              <option value="Manual Verification">Manual Verification</option>
+              <option value="Need Review">Need Review</option>
+              <option value="Senior Review">Senior Review</option>
+            </select>
+            <select id="policy-filter">
+              <option value="">All Policy Types</option>
+              <option value="Health">Health</option>
+              <option value="Motor">Motor</option>
+              <option value="Life">Life</option>
+            </select>
+            <select id="risk-filter">
+              <option value="">All Risk Categories</option>
+              <option value="Low">Low</option>
+              <option value="Medium">Medium</option>
+              <option value="High">High</option>
+            </select>
+            <button id="apply-filter-btn" class="secondary">Apply Filter</button>
+          </div>
+
+          <div id="processed-message" class="message"></div>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Claim ID</th>
+                  <th>Policy</th>
+                  <th>Name</th>
+                  <th>Decision</th>
+                  <th>Risk</th>
+                  <th>Status</th>
+                  <th>Amount</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="processed-table-body"></tbody>
+            </table>
+          </div>
+
+          <div class="pagination">
+            <button id="prev-page-btn" class="secondary">Previous</button>
+            <span id="page-info">Page 1</span>
+            <button id="next-page-btn" class="secondary">Next</button>
+          </div>
+        </div>
+      </section>
+
+      <section id="dashboard-screen" class="screen">
+        <div class="panel">
+          <div class="panel-header">
+            <div>
+              <h2>Dashboard</h2>
+              <p>KPI cards, charts, and high-risk customers.</p>
+            </div>
+            <div class="dashboard-actions">
+              <button id="refresh-dashboard-btn" class="secondary">Refresh Dashboard</button>
+            </div>
+          </div>
+
+          <div id="kpi-cards" class="cards"></div>
+
+          <div class="chart-grid">
+            <div class="chart-card">
+              <h3>Decision Summary</h3>
+              <canvas id="decisionChart" width="360" height="220"></canvas>
+              <div id="decision-legend" class="chart-legend"></div>
+            </div>
+            <div class="chart-card">
+              <h3>Policy Mix</h3>
+              <canvas id="statusChart" width="360" height="220"></canvas>
+              <div id="policy-legend" class="chart-legend"></div>
+            </div>
+          </div>
+
+          <div class="chart-grid single-chart">
+            <div class="chart-card">
+              <h3>Risk Distribution</h3>
+              <canvas id="riskChart" width="360" height="220"></canvas>
+              <div id="risk-legend" class="chart-legend"></div>
+            </div>
+            <div class="chart-card">
+              <h3>Risky Customers</h3>
+              <div id="risky-customers-panel" class="risk-list"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div id="edit-modal" class="modal hidden">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Update Claim</h3>
+        <button id="close-modal-btn" class="icon-btn">&times;</button>
+      </div>
+      <form id="edit-form" class="form-grid">
+        <input type="hidden" name="claim_id" />
+        <label>
+          Policy Type
+          <select name="policy_type" id="edit-policy-type" required>
+            <option value="Health">Health</option>
+            <option value="Motor">Motor</option>
+            <option value="Life">Life</option>
+          </select>
+        </label>
+        <label>
+          Customer Name
+          <input type="text" name="customer_name" required />
+        </label>
+        <label>
+          Customer Age
+          <input type="number" name="customer_age" min="18" max="100" required />
+        </label>
+        <label>
+          Claim Amount
+          <input type="number" name="claim_amount" min="1" required />
+        </label>
+        <label>
+          Previous Claims
+          <input type="number" name="previous_claims" min="0" required />
+        </label>
+
+        <div class="full edit-policy-fields" id="edit-health-fields">
+          <label>
+            Hospital
+            <input type="text" name="hospital" />
+          </label>
+        </div>
+
+        <div class="full edit-policy-fields hidden" id="edit-motor-fields">
+          <div class="field-grid">
+            <label>
+              Vehicle Number
+              <input type="text" name="vehicle_number" />
+            </label>
+            <label>
+              Garage Name
+              <input type="text" name="garage_name" />
+            </label>
+          </div>
+        </div>
+
+        <div class="full edit-policy-fields hidden" id="edit-life-fields">
+          <div class="field-grid">
+            <label>
+              Nominee Name
+              <input type="text" name="nominee_name" />
+            </label>
+            <label>
+              Nominee Relationship
+              <input type="text" name="nominee_relationship" />
+            </label>
+          </div>
+        </div>
+
+        <label class="full">
+          Documents
+          <input type="file" name="documents" id="edit-documents-input" multiple />
+          <small>Upload again if you want to replace the current files.</small>
+        </label>
+
+        <div id="edit-doc-hint" class="doc-hint full"></div>
+        <div class="full actions">
+          <button type="submit" class="primary">Save Changes</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div id="search-modal" class="modal hidden">
+    <div class="modal-content search-modal-content">
+      <div class="modal-header">
+        <h3>Claim Details</h3>
+        <button id="close-search-modal-btn" class="icon-btn">&times;</button>
+      </div>
+      <div id="search-modal-body"></div>
+    </div>
+  </div>
+
+  <script src="/static/portal.js"></script>
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Claim Submission</title>
+  <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Insurance Claims Processing System</p>
+        <h1>Claim Submission</h1>
+      </div>
+    </header>
+
+    <main>
+      <section class="screen active">
+        <div class="panel">
+          <div class="panel-header">
+            <div>
+              <h2>Submit a Claim</h2>
+              <p>Select a policy type first. Only the related fields will appear.</p>
+            </div>
+          </div>
+
+          <form id="claim-form" class="form-grid">
+            <label>
+              Policy Type
+              <select name="policy_type" id="policy-type-select" required>
+                <option value="" selected disabled>Select policy type</option>
+                <option value="Health">Health</option>
+                <option value="Motor">Motor</option>
+                <option value="Life">Life</option>
+              </select>
+            </label>
+            <label>
+              Claim ID
+              <input type="text" name="claim_id" placeholder="CLM1001" required />
+            </label>
+            <label>
+              Customer Name
+              <input type="text" name="customer_name" placeholder="Rahul Sharma" required />
+            </label>
+            <label>
+              Customer Age
+              <input type="number" name="customer_age" min="18" max="100" required />
+            </label>
+            <label>
+              Claim Amount
+              <input type="number" name="claim_amount" min="1" required />
+            </label>
+            <label>
+              Previous Claims
+              <input type="number" name="previous_claims" min="0" value="0" required />
+            </label>
+
+            <div id="health-fields" class="policy-fields full hidden">
+              <label>
+                Hospital
+                <input type="text" name="hospital" placeholder="Apollo Hospital" />
+              </label>
+            </div>
+
+            <div id="motor-fields" class="policy-fields full hidden">
+              <div class="field-grid">
+                <label>
+                  Vehicle Number
+                  <input type="text" name="vehicle_number" placeholder="MH12AB1234" />
+                </label>
+                <label>
+                  Garage Name
+                  <input type="text" name="garage_name" placeholder="City Garage" />
+                </label>
+              </div>
+            </div>
+
+            <div id="life-fields" class="policy-fields full hidden">
+              <div class="field-grid">
+                <label>
+                  Nominee Name
+                  <input type="text" name="nominee_name" placeholder="Asha Sharma" />
+                </label>
+                <label>
+                  Nominee Relationship
+                  <input type="text" name="nominee_relationship" placeholder="Spouse" />
+                </label>
+              </div>
+            </div>
+
+            <label class="full">
+              Documents
+              <input type="file" name="documents" id="documents-input" multiple required />
+              <small>Upload files such as invoice.pdf, health_card.pdf, rc.pdf, or id_proof.pdf.</small>
+            </label>
+
+            <div id="doc-hint" class="doc-hint full">Please select a policy type to see the required fields.</div>
+            <div class="full actions">
+              <button type="submit" class="primary">Submit Claim</button>
+            </div>
+          </form>
+          <div id="user-message" class="message"></div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="/static/user.js"></script>
+</body>
+</html>
