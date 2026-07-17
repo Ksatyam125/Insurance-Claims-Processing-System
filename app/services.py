@@ -1,6 +1,7 @@
 import json
 import logging
-from typing import Optional
+from secrets import token_hex
+from typing import Optional, Union
 
 from fastapi import HTTPException
 from sqlalchemy import func
@@ -22,7 +23,16 @@ REQUIRED_DOC_KEYWORDS = {
 }
 
 
-def validate_claim(claim: ClaimSubmit | ClaimUpdate) -> list[str]:
+def generate_claim_id(unprocessed_db: Session, processed_db: Session) -> str:
+    while True:
+        claim_id = f"CLM{token_hex(4).upper()}"
+        exists_unprocessed = unprocessed_db.query(UnprocessedClaim).filter(UnprocessedClaim.claim_id == claim_id).first()
+        exists_processed = processed_db.query(ProcessedClaim).filter(ProcessedClaim.claim_id == claim_id).first()
+        if not exists_unprocessed and not exists_processed:
+            return claim_id
+
+
+def validate_claim(claim: Union[ClaimSubmit, ClaimUpdate]) -> list[str]:
     errors: list[str] = []
 
     if not claim.customer_name.strip():
@@ -55,7 +65,7 @@ def validate_claim(claim: ClaimSubmit | ClaimUpdate) -> list[str]:
     return errors
 
 
-def determine_decision(claim: ClaimSubmit | ClaimUpdate) -> str:
+def determine_decision(claim: Union[ClaimSubmit, ClaimUpdate]) -> str:
     if claim.claim_amount > 100000 and claim.previous_claims > 5:
         return "Rejected"
     if claim.missing_documents:
@@ -67,7 +77,7 @@ def determine_decision(claim: ClaimSubmit | ClaimUpdate) -> str:
     return "Approved"
 
 
-def calculate_risk_score(claim: ClaimSubmit | ClaimUpdate) -> tuple[int, str]:
+def calculate_risk_score(claim: Union[ClaimSubmit, ClaimUpdate]) -> tuple[int, str]:
     if 18 <= claim.customer_age <= 30:
         age_score = 10
     elif 31 <= claim.customer_age <= 60:
@@ -122,7 +132,7 @@ def _build_unprocessed_model(claim: ClaimSubmit) -> UnprocessedClaim:
     )
 
 
-def _build_processed_model(claim: ClaimSubmit | ClaimUpdate, claim_id: str) -> ProcessedClaim:
+def _build_processed_model(claim: Union[ClaimSubmit, ClaimUpdate], claim_id: str) -> ProcessedClaim:
     claim = _ensure_missing_documents(claim)
     errors = validate_claim(claim)
     if errors:
@@ -219,9 +229,9 @@ def _compute_missing_documents(policy_type: str, document_names: list[str]) -> b
     return any(not any(keyword in name for name in names) for keyword in required_keywords)
 
 
-def _ensure_missing_documents(claim: ClaimSubmit | ClaimUpdate) -> ClaimSubmit | ClaimUpdate:
+def _ensure_missing_documents(claim: Union[ClaimSubmit, ClaimUpdate]) -> Union[ClaimSubmit, ClaimUpdate]:
     normalized_documents = _normalize_documents(claim.documents)
-    return claim.model_copy(
+    return claim.copy(
         update={
             "documents": normalized_documents,
             "missing_documents": _compute_missing_documents(claim.policy_type, normalized_documents),

@@ -4375,3 +4375,268 @@ WHERE unprocessed_claims.claim_id = ?
 2026-07-16 21:33:49,068 - INFO - Incoming API request: GET /claims
 2026-07-16 21:33:49,102 - INFO - Incoming API request: GET /unprocessed-claims
 2026-07-16 21:33:51,523 - INFO - Incoming API request: GET /
+2026-07-16 22:03:45,835 - INFO - Application startup
+2026-07-16 22:31:26,830 - INFO - Incoming API request: POST /claims/submit
+2026-07-16 22:31:27,299 - INFO - Incoming API request: POST /claims/submit
+2026-07-16 22:31:27,482 - INFO - Incoming API request: POST /claims/submit
+2026-07-16 22:31:42,184 - INFO - Incoming API request: POST /claims/submit
+2026-07-16 22:31:42,204 - INFO - Submitted claim CLM1001 to unprocessed database
+2026-07-16 22:31:42,210 - INFO - Incoming API request: GET /unprocessed-claims
+2026-07-16 22:31:42,217 - INFO - Incoming API request: POST /claims/process
+2026-07-16 22:31:42,235 - INFO - Processed claim CLM1001
+2026-07-16 22:31:42,235 - INFO - Processing summary: 1 claims processed
+2026-07-16 22:31:42,241 - INFO - Incoming API request: GET /claims
+2026-07-16 22:31:42,251 - INFO - Incoming API request: GET /summary
+2026-07-16 22:31:42,263 - INFO - Incoming API request: POST /claims/submit
+2026-07-16 22:31:42,276 - INFO - Submitted claim CLM2001 to unprocessed database
+2026-07-16 22:31:42,280 - INFO - Incoming API request: POST /claims/process
+2026-07-16 22:31:42,296 - INFO - Processed claim CLM2001
+2026-07-16 22:31:42,296 - INFO - Processing summary: 1 claims processed
+2026-07-16 22:31:42,300 - INFO - Incoming API request: GET /claims/CLM2001
+2026-07-16 22:31:42,307 - INFO - Incoming API request: PUT /claims/CLM2001
+2026-07-16 22:31:42,319 - INFO - Updated claim CLM2001
+2026-07-16 22:31:42,324 - INFO - Incoming API request: GET /claims
+2026-07-16 22:31:42,334 - INFO - Incoming API request: GET /claims/high-risk
+2026-07-16 22:31:42,342 - INFO - Incoming API request: DELETE /claims/CLM2001
+2026-07-16 22:31:42,350 - INFO - Deleted claim CLM2001
+2026-07-16 22:31:42,354 - INFO - Incoming API request: GET /claims/CLM2001
+2026-07-16 22:31:42,363 - INFO - Incoming API request: POST /claims/submit
+2026-07-16 22:31:42,375 - INFO - Submitted claim CLM3001 to unprocessed database
+2026-07-16 22:31:54,874 - INFO - Application startup
+2026-07-16 22:32:12,131 - INFO - Application startup
+2026-07-16 22:32:18,355 - INFO - Incoming API request: GET /
+2026-07-16 22:32:18,555 - INFO - Incoming API request: GET /static/user.js
+2026-07-16 22:32:18,556 - INFO - Incoming API request: GET /static/styles.css
+2026-07-16 22:32:29,772 - INFO - Incoming API request: GET /
+2026-07-16 22:32:29,810 - INFO - Incoming API request: GET /static/user.js
+2026-07-16 22:32:29,811 - INFO - Incoming API request: GET /static/styles.css
+2026-07-16 22:33:59,366 - INFO - Incoming API request: GET /executive
+2026-07-16 22:34:22,194 - INFO - Incoming API request: GET /executive
+2026-07-16 22:36:21,559 - INFO - Incoming API request: GET /portal
+2026-07-16 22:36:21,598 - INFO - Incoming API request: GET /static/styles.css
+2026-07-16 22:36:21,601 - INFO - Incoming API request: GET /static/portal.js
+2026-07-16 22:36:21,690 - INFO - Incoming API request: GET /unprocessed-claims
+2026-07-16 22:36:21,691 - INFO - Incoming API request: GET /claims
+2026-07-16 22:36:21,694 - INFO - Incoming API request: GET /summary
+2026-07-16 22:36:21,694 - INFO - Incoming API request: GET /claims/high-risk
+2026-07-16 22:36:21,705 - INFO - Incoming API request: GET /claims
+2026-07-16 22:36:21,752 - INFO - Incoming API request: GET /unprocessed-claims
+2026-07-16 22:36:25,676 - INFO - Incoming API request: POST /claims/process
+2026-07-16 22:36:25,679 - INFO - Processing summary: 0 claims processed
+2026-07-16 22:36:25,683 - INFO - Incoming API request: GET /unprocessed-claims
+2026-07-16 22:36:25,694 - INFO - Incoming API request: GET /claims
+2026-07-16 22:36:25,705 - INFO - Incoming API request: GET /summary
+2026-07-16 22:36:25,707 - INFO - Incoming API request: GET /claims/high-risk
+2026-07-16 22:36:25,709 - INFO - Incoming API request: GET /unprocessed-claims
+2026-07-16 22:36:25,709 - INFO - Incoming API request: GET /claims
+2026-07-16 22:36:27,889 - INFO - Incoming API request: GET /claims
+2026-07-16 22:36:30,197 - INFO - Incoming API request: GET /summary
+2026-07-16 22:36:30,198 - INFO - Incoming API request: GET /claims/high-risk
+2026-07-16 22:36:30,199 - INFO - Incoming API request: GET /claims
+2026-07-16 22:36:30,199 - INFO - Incoming API request: GET /unprocessed-claims
+2026-07-16 23:24:35,945 - INFO - Incoming API request: GET /claims
+2026-07-16 23:24:49,179 - INFO - Incoming API request: GET /claims/CLM104
+2026-07-17 00:52:41,329 - INFO - Incoming API request: POST /claims/submit
+2026-07-17 00:52:41,460 - INFO - Submitted claim CML200 to unprocessed database
+2026-07-17 00:52:48,990 - INFO - Incoming API request: GET /unprocessed-claims
+2026-07-17 00:52:58,058 - INFO - Incoming API request: POST /claims/process
+2026-07-17 00:52:58,115 - INFO - Processed claim CML200
+2026-07-17 00:52:58,116 - INFO - Processing summary: 1 claims processed
+2026-07-17 00:52:58,130 - INFO - Incoming API request: GET /unprocessed-claims
+2026-07-17 00:52:58,149 - INFO - Incoming API request: GET /claims
+2026-07-17 00:52:58,189 - INFO - Incoming API request: GET /summary
+2026-07-17 00:52:58,193 - INFO - Incoming API request: GET /claims/high-risk
+2026-07-17 00:52:58,198 - INFO - Incoming API request: GET /claims
+2026-07-17 00:52:58,200 - INFO - Incoming API request: GET /unprocessed-claims
+2026-07-17 00:53:00,431 - INFO - Incoming API request: GET /claims
+2026-07-17 00:53:06,016 - INFO - Incoming API request: GET /claims
+2026-07-17 00:53:10,626 - INFO - Incoming API request: GET /claims
+2026-07-17 00:53:12,957 - INFO - Incoming API request: GET /summary
+2026-07-17 00:53:12,968 - INFO - Incoming API request: GET /claims
+2026-07-17 00:53:12,974 - INFO - Incoming API request: GET /unprocessed-claims
+2026-07-17 00:53:12,976 - INFO - Incoming API request: GET /claims/high-risk
+2026-07-17 00:53:41,121 - INFO - Incoming API request: GET /claims
+2026-07-17 00:53:45,725 - INFO - Incoming API request: GET /claims
+2026-07-17 00:54:07,143 - INFO - Incoming API request: GET /claims/CLM103
+2026-07-17 00:55:07,017 - INFO - Incoming API request: PUT /claims/CLM103
+2026-07-17 00:55:07,055 - INFO - Updated claim CLM103
+2026-07-17 00:55:07,068 - INFO - Incoming API request: GET /claims
+2026-07-17 00:55:07,137 - INFO - Incoming API request: GET /summary
+2026-07-17 00:55:07,143 - INFO - Incoming API request: GET /claims
+2026-07-17 00:55:07,147 - INFO - Incoming API request: GET /unprocessed-claims
+2026-07-17 00:55:07,150 - INFO - Incoming API request: GET /claims/high-risk
+2026-07-17 00:55:13,977 - INFO - Incoming API request: GET /summary
+2026-07-17 00:55:13,983 - INFO - Incoming API request: GET /claims/high-risk
+2026-07-17 00:55:13,985 - INFO - Incoming API request: GET /unprocessed-claims
+2026-07-17 00:55:13,990 - INFO - Incoming API request: GET /claims
+2026-07-17 01:02:41,666 - INFO - Incoming API request: POST /claims/submit
+2026-07-17 01:02:41,699 - INFO - Submitted claim CLMC56887AC to unprocessed database
+2026-07-17 01:02:41,705 - INFO - Incoming API request: GET /unprocessed-claims
+2026-07-17 01:02:41,717 - INFO - Incoming API request: POST /claims/process
+2026-07-17 01:02:41,742 - INFO - Processed claim CLMC56887AC
+2026-07-17 01:02:41,742 - INFO - Processing summary: 1 claims processed
+2026-07-17 01:02:41,759 - INFO - Incoming API request: GET /claims
+2026-07-17 01:02:41,788 - INFO - Incoming API request: GET /summary
+2026-07-17 01:02:41,822 - INFO - Incoming API request: POST /claims/submit
+2026-07-17 01:02:41,851 - INFO - Submitted claim CLM1CB20933 to unprocessed database
+2026-07-17 01:02:41,863 - INFO - Incoming API request: POST /claims/process
+2026-07-17 01:02:41,892 - INFO - Processed claim CLM1CB20933
+2026-07-17 01:02:41,893 - INFO - Processing summary: 1 claims processed
+2026-07-17 01:02:41,906 - INFO - Incoming API request: GET /claims/CLM1CB20933
+2026-07-17 01:02:41,923 - INFO - Incoming API request: PUT /claims/CLM1CB20933
+2026-07-17 01:02:41,947 - INFO - Updated claim CLM1CB20933
+2026-07-17 01:02:41,956 - INFO - Incoming API request: GET /claims
+2026-07-17 01:02:41,975 - INFO - Incoming API request: GET /claims/high-risk
+2026-07-17 01:02:41,991 - INFO - Incoming API request: DELETE /claims/CLM1CB20933
+2026-07-17 01:02:42,003 - INFO - Deleted claim CLM1CB20933
+2026-07-17 01:02:42,009 - INFO - Incoming API request: GET /claims/CLM1CB20933
+2026-07-17 01:02:42,019 - INFO - Incoming API request: POST /claims/submit
+2026-07-17 01:02:42,035 - INFO - Submitted claim CLM5053E19D to unprocessed database
+2026-07-17 01:04:10,613 - INFO - Incoming API request: GET /
+2026-07-17 01:04:10,676 - INFO - Incoming API request: GET /static/styles.css
+2026-07-17 01:04:10,678 - INFO - Incoming API request: GET /static/user.js
+2026-07-17 01:04:12,755 - INFO - Application startup
+2026-07-17 01:05:25,696 - INFO - Incoming API request: POST /claims/submit
+2026-07-17 01:05:25,785 - INFO - Submitted claim CLM9E030B65 to unprocessed database
+2026-07-17 01:05:36,847 - INFO - Incoming API request: GET /unprocessed-claims
+2026-07-17 01:05:43,296 - INFO - Incoming API request: GET /claims
+2026-07-17 01:05:53,627 - INFO - Incoming API request: GET /claims
+2026-07-17 01:08:57,429 - INFO - Incoming API request: GET /claims
+2026-07-17 01:09:01,638 - INFO - Incoming API request: GET /claims
+2026-07-17 01:09:09,096 - INFO - Incoming API request: GET /claims
+2026-07-17 01:09:16,112 - INFO - Incoming API request: GET /claims
+2026-07-17 01:09:20,324 - INFO - Incoming API request: GET /claims
+2026-07-17 01:09:32,856 - INFO - Incoming API request: GET /claims
+2026-07-17 01:09:40,082 - INFO - Incoming API request: GET /claims
+2026-07-17 01:09:43,279 - INFO - Incoming API request: GET /claims
+2026-07-17 01:09:46,748 - INFO - Incoming API request: GET /claims
+2026-07-17 01:10:15,193 - INFO - Incoming API request: GET /
+2026-07-17 01:10:15,835 - INFO - Incoming API request: GET /static/user.js
+2026-07-17 19:06:22,870 - INFO - Application startup
+2026-07-17 19:06:34,505 - INFO - Incoming API request: GET /
+2026-07-17 19:06:35,221 - INFO - Incoming API request: GET /static/styles.css
+2026-07-17 19:06:35,223 - INFO - Incoming API request: GET /static/user.js
+2026-07-17 19:06:47,996 - INFO - Incoming API request: GET /unprocessed-claims
+2026-07-17 19:07:15,901 - INFO - Incoming API request: GET /claims
+2026-07-17 19:07:24,989 - INFO - Incoming API request: GET /summary
+2026-07-17 19:07:24,989 - INFO - Incoming API request: GET /unprocessed-claims
+2026-07-17 19:07:24,991 - INFO - Incoming API request: GET /claims
+2026-07-17 19:07:24,996 - INFO - Incoming API request: GET /claims/high-risk
+2026-07-17 19:07:33,434 - INFO - Incoming API request: GET /summary
+2026-07-17 19:07:33,437 - INFO - Incoming API request: GET /claims/high-risk
+2026-07-17 19:07:33,441 - INFO - Incoming API request: GET /unprocessed-claims
+2026-07-17 19:07:33,441 - INFO - Incoming API request: GET /claims
+2026-07-17 19:12:15,507 - INFO - Incoming API request: POST /claims/submit
+2026-07-17 19:12:15,568 - INFO - Submitted claim CLM5D1FEB31 to unprocessed database
+2026-07-17 19:12:27,918 - INFO - Incoming API request: GET /unprocessed-claims
+2026-07-17 19:12:53,085 - INFO - Incoming API request: POST /claims/process
+2026-07-17 19:12:53,138 - INFO - Processed claim CLM9E030B65
+2026-07-17 19:12:53,182 - INFO - Processed claim CLM5D1FEB31
+2026-07-17 19:12:53,182 - INFO - Processing summary: 2 claims processed
+2026-07-17 19:12:53,198 - INFO - Incoming API request: GET /unprocessed-claims
+2026-07-17 19:12:53,218 - INFO - Incoming API request: GET /claims
+2026-07-17 19:12:53,256 - INFO - Incoming API request: GET /summary
+2026-07-17 19:12:53,270 - INFO - Incoming API request: GET /claims/high-risk
+2026-07-17 19:12:53,274 - INFO - Incoming API request: GET /unprocessed-claims
+2026-07-17 19:12:53,276 - INFO - Incoming API request: GET /claims
+2026-07-17 19:13:00,108 - INFO - Incoming API request: GET /claims
+2026-07-17 19:13:31,742 - INFO - Incoming API request: GET /claims
+2026-07-17 19:13:36,679 - INFO - Incoming API request: GET /claims/CLM5D1FEB31
+2026-07-17 19:13:56,146 - INFO - Incoming API request: PUT /claims/CLM5D1FEB31
+2026-07-17 19:13:56,176 - INFO - Updated claim CLM5D1FEB31
+2026-07-17 19:13:56,188 - INFO - Incoming API request: GET /claims
+2026-07-17 19:13:56,320 - INFO - Incoming API request: GET /summary
+2026-07-17 19:13:56,328 - INFO - Incoming API request: GET /claims/high-risk
+2026-07-17 19:13:56,332 - INFO - Incoming API request: GET /unprocessed-claims
+2026-07-17 19:13:56,335 - INFO - Incoming API request: GET /claims
+2026-07-17 19:14:09,126 - INFO - Incoming API request: GET /claims/CLM5D1FEB31
+2026-07-17 19:14:22,160 - INFO - Incoming API request: PUT /claims/CLM5D1FEB31
+2026-07-17 19:14:22,194 - INFO - Updated claim CLM5D1FEB31
+2026-07-17 19:14:22,210 - INFO - Incoming API request: GET /claims
+2026-07-17 19:14:22,346 - INFO - Incoming API request: GET /summary
+2026-07-17 19:14:22,354 - INFO - Incoming API request: GET /claims/high-risk
+2026-07-17 19:14:22,358 - INFO - Incoming API request: GET /unprocessed-claims
+2026-07-17 19:14:22,363 - INFO - Incoming API request: GET /claims
+2026-07-17 19:14:34,611 - INFO - Incoming API request: DELETE /claims/CLM9E030B65
+2026-07-17 19:14:34,645 - INFO - Deleted claim CLM9E030B65
+2026-07-17 19:14:34,670 - INFO - Incoming API request: GET /claims
+2026-07-17 19:14:34,740 - INFO - Incoming API request: GET /summary
+2026-07-17 19:14:34,754 - INFO - Incoming API request: GET /claims
+2026-07-17 19:14:34,756 - INFO - Incoming API request: GET /unprocessed-claims
+2026-07-17 19:14:34,757 - INFO - Incoming API request: GET /claims/high-risk
+2026-07-17 19:14:54,559 - INFO - Incoming API request: GET /claims/CLM5D1FEB31
+2026-07-17 19:15:14,287 - INFO - Incoming API request: GET /claims
+2026-07-17 19:15:21,167 - INFO - Incoming API request: GET /summary
+2026-07-17 19:15:21,177 - INFO - Incoming API request: GET /claims/high-risk
+2026-07-17 19:15:21,178 - INFO - Incoming API request: GET /unprocessed-claims
+2026-07-17 19:15:21,194 - INFO - Incoming API request: GET /claims
+2026-07-17 19:23:17,585 - INFO - Incoming API request: GET /unprocessed-claims
+2026-07-17 19:23:29,414 - INFO - Incoming API request: GET /.well-known/appspecific/com.chrome.devtools.json
+2026-07-17 19:25:21,079 - INFO - Incoming API request: GET /claims
+2026-07-17 19:25:24,402 - INFO - Incoming API request: GET /unprocessed-claims
+2026-07-17 19:26:51,459 - INFO - Incoming API request: POST /claims/submit
+2026-07-17 19:26:51,473 - INFO - Submitted claim CLMDC55EFB1 to unprocessed database
+2026-07-17 19:27:22,859 - INFO - Incoming API request: GET /claims
+2026-07-17 19:27:32,920 - INFO - Incoming API request: GET /claims
+2026-07-17 19:27:37,261 - INFO - Incoming API request: GET /unprocessed-claims
+2026-07-17 19:27:46,365 - INFO - Incoming API request: POST /claims/process
+2026-07-17 19:27:46,379 - INFO - Processed claim CLMDC55EFB1
+2026-07-17 19:27:46,380 - INFO - Processing summary: 1 claims processed
+2026-07-17 19:27:46,387 - INFO - Incoming API request: GET /unprocessed-claims
+2026-07-17 19:27:46,394 - INFO - Incoming API request: GET /claims
+2026-07-17 19:27:46,427 - INFO - Incoming API request: GET /claims/high-risk
+2026-07-17 19:27:46,428 - INFO - Incoming API request: GET /unprocessed-claims
+2026-07-17 19:27:46,428 - INFO - Incoming API request: GET /summary
+2026-07-17 19:27:46,429 - INFO - Incoming API request: GET /claims
+2026-07-17 19:28:27,151 - INFO - Incoming API request: GET /claims
+2026-07-17 19:28:32,559 - INFO - Incoming API request: DELETE /claims/CLMDC55EFB1
+2026-07-17 19:28:32,573 - INFO - Deleted claim CLMDC55EFB1
+2026-07-17 19:28:32,579 - INFO - Incoming API request: GET /claims
+2026-07-17 19:28:32,613 - INFO - Incoming API request: GET /summary
+2026-07-17 19:28:32,616 - INFO - Incoming API request: GET /claims/high-risk
+2026-07-17 19:28:32,619 - INFO - Incoming API request: GET /unprocessed-claims
+2026-07-17 19:28:32,622 - INFO - Incoming API request: GET /claims
+2026-07-17 19:28:36,592 - INFO - Incoming API request: GET /unprocessed-claims
+2026-07-17 19:29:21,867 - INFO - Incoming API request: POST /claims/submit
+2026-07-17 19:29:21,879 - INFO - Submitted claim CLM3ADF6ECE to unprocessed database
+2026-07-17 19:29:38,249 - INFO - Incoming API request: GET /claims
+2026-07-17 19:29:39,202 - INFO - Incoming API request: GET /unprocessed-claims
+2026-07-17 19:29:54,660 - INFO - Incoming API request: GET /
+2026-07-17 19:31:13,421 - INFO - Incoming API request: POST /claims/submit
+2026-07-17 19:31:13,433 - INFO - Submitted claim CLM6E103A5A to unprocessed database
+2026-07-17 19:31:28,924 - INFO - Incoming API request: GET /claims
+2026-07-17 19:31:29,795 - INFO - Incoming API request: GET /unprocessed-claims
+2026-07-17 19:31:38,445 - INFO - Incoming API request: POST /claims/process
+2026-07-17 19:31:38,462 - INFO - Processed claim CLM3ADF6ECE
+2026-07-17 19:31:38,479 - INFO - Processed claim CLM6E103A5A
+2026-07-17 19:31:38,479 - INFO - Processing summary: 2 claims processed
+2026-07-17 19:31:38,486 - INFO - Incoming API request: GET /unprocessed-claims
+2026-07-17 19:31:38,503 - INFO - Incoming API request: GET /claims
+2026-07-17 19:31:38,522 - INFO - Incoming API request: GET /summary
+2026-07-17 19:31:38,526 - INFO - Incoming API request: GET /unprocessed-claims
+2026-07-17 19:31:38,528 - INFO - Incoming API request: GET /claims/high-risk
+2026-07-17 19:31:38,531 - INFO - Incoming API request: GET /claims
+2026-07-17 19:31:44,089 - INFO - Incoming API request: GET /claims
+2026-07-17 19:32:00,146 - INFO - Incoming API request: GET /claims/CLM3ADF6ECE
+2026-07-17 19:32:26,328 - INFO - Incoming API request: PUT /claims/CLM3ADF6ECE
+2026-07-17 19:32:26,340 - INFO - Updated claim CLM3ADF6ECE
+2026-07-17 19:32:26,345 - INFO - Incoming API request: GET /claims
+2026-07-17 19:32:26,390 - INFO - Incoming API request: GET /summary
+2026-07-17 19:32:26,394 - INFO - Incoming API request: GET /unprocessed-claims
+2026-07-17 19:32:26,395 - INFO - Incoming API request: GET /claims/high-risk
+2026-07-17 19:32:26,400 - INFO - Incoming API request: GET /claims
+2026-07-17 19:32:41,708 - INFO - Incoming API request: DELETE /claims/CML200
+2026-07-17 19:32:41,722 - INFO - Deleted claim CML200
+2026-07-17 19:32:41,734 - INFO - Incoming API request: GET /claims
+2026-07-17 19:32:41,795 - INFO - Incoming API request: GET /summary
+2026-07-17 19:32:41,798 - INFO - Incoming API request: GET /claims/high-risk
+2026-07-17 19:32:41,804 - INFO - Incoming API request: GET /claims
+2026-07-17 19:32:41,805 - INFO - Incoming API request: GET /unprocessed-claims
+2026-07-17 19:32:48,454 - INFO - Incoming API request: GET /claims
+2026-07-17 19:32:55,998 - INFO - Incoming API request: GET /claims
+2026-07-17 19:33:07,870 - INFO - Incoming API request: GET /claims
+2026-07-17 19:33:21,867 - INFO - Incoming API request: GET /claims/CLM109
+2026-07-17 19:33:30,551 - INFO - Incoming API request: GET /summary
+2026-07-17 19:33:30,552 - INFO - Incoming API request: GET /claims/high-risk
+2026-07-17 19:33:30,556 - INFO - Incoming API request: GET /unprocessed-claims
+2026-07-17 19:33:30,557 - INFO - Incoming API request: GET /claims

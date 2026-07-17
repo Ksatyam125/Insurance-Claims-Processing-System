@@ -1,14 +1,21 @@
-from typing import List, Literal, Optional
+from enum import Enum
+from typing import List, Optional
 
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, Field
+
+
+class PolicyType(str, Enum):
+    HEALTH = "Health"
+    MOTOR = "Motor"
+    LIFE = "Life"
 
 
 class ClaimBase(BaseModel):
     customer_name: str = Field(min_length=1)
     customer_age: int = Field(ge=18, le=100)
-    policy_type: Literal["Health", "Motor", "Life"]
+    policy_type: PolicyType
     claim_amount: int = Field(gt=0)
-    documents: List[str] = Field(min_length=1)
+    documents: List[str] = Field(min_items=1)
     previous_claims: int = Field(ge=0, default=0)
     hospital: Optional[str] = None
     vehicle_number: Optional[str] = None
@@ -31,7 +38,8 @@ class ProcessClaimsRequest(BaseModel):
 
 
 class ClaimItem(BaseModel):
-    model_config = ConfigDict(from_attributes=True)
+    class Config:
+        orm_mode = True
 
     claim_id: str
     customer_name: str

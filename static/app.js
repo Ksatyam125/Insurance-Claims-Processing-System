@@ -96,7 +96,6 @@ function collectFormData(form, includeFiles = true) {
   const formData = new FormData();
   const documentFiles = includeFiles ? form.elements.documents.files : [];
 
-  formData.append("claim_id", (form.elements.claim_id?.value || "").trim());
   formData.append("customer_name", (form.elements.customer_name?.value || "").trim());
   formData.append("customer_age", String(form.elements.customer_age?.value || ""));
   formData.append("policy_type", form.elements.policy_type.value);
@@ -149,11 +148,11 @@ async function submitClaim(event) {
   clearMessage(userMessage);
 
   try {
-    await fetchJson("/claims/submit", {
+    const data = await fetchJson("/claims/submit", {
       method: "POST",
       body: collectFormData(event.target),
     });
-    showMessage(userMessage, "Claim saved in the unprocessed database.");
+    showMessage(userMessage, `Claim saved in the unprocessed database. Claim ID: ${data.claim_id}.`);
     event.target.reset();
     applyPolicyUI(event.target);
     await loadIncomingClaims();

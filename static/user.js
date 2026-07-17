@@ -65,7 +65,6 @@ function applyPolicyUI(policyType) {
 
 function collectFormData(form) {
   const formData = new FormData();
-  formData.append("claim_id", form.elements.claim_id.value.trim());
   formData.append("customer_name", form.elements.customer_name.value.trim());
   formData.append("customer_age", form.elements.customer_age.value);
   formData.append("policy_type", form.elements.policy_type.value);
@@ -99,7 +98,7 @@ async function submitClaim(event) {
       const detail = Array.isArray(data.detail) ? data.detail.map((item) => item.msg || item).join(", ") : data.detail;
       throw new Error(detail || "Request failed");
     }
-    showMessage("Claim submitted successfully.");
+    showMessage(`Claim submitted successfully. Your claim ID is ${data.claim_id}.`);
     event.target.reset();
     policyTypeSelect.value = "";
     applyPolicyUI("");

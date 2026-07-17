@@ -31,9 +31,8 @@ def teardown_module():
             path.unlink()
 
 
-def submit_claim(claim_id, policy_type, extra_data, file_names):
+def submit_claim(policy_type, extra_data, file_names):
     data = {
-        "claim_id": claim_id,
         "customer_name": extra_data.get("customer_name", "Rahul Sharma"),
         "customer_age": str(extra_data.get("customer_age", 45)),
         "policy_type": policy_type,
@@ -51,13 +50,13 @@ def submit_claim(claim_id, policy_type, extra_data, file_names):
 
 def test_submit_and_process_flow():
     submit_response = submit_claim(
-        "CLM1001",
         "Health",
         {"hospital": "Apollo Hospital"},
         ["invoice.pdf", "health_card.pdf"],
     )
     assert submit_response.status_code == 200
-    assert submit_response.json()["claim_id"] == "CLM1001"
+    claim_id = submit_response.json()["claim_id"]
+    assert claim_id.startswith("CLM")
 
     pending_response = client.get("/unprocessed-claims")
     assert pending_response.status_code == 200
@@ -71,7 +70,7 @@ def test_submit_and_process_flow():
     assert processed_response.status_code == 200
     body = processed_response.json()
     assert body["total"] == 1
-    assert body["items"][0]["claim_id"] == "CLM1001"
+    assert body["items"][0]["claim_id"] == claim_id
 
     summary_response = client.get("/summary")
     assert summary_response.status_code == 200
@@ -80,7 +79,6 @@ def test_submit_and_process_flow():
 
 def test_search_update_delete_and_filters():
     submit_response = submit_claim(
-        "CLM2001",
         "Motor",
         {
             "customer_age": 33,
@@ -91,9 +89,10 @@ def test_search_update_delete_and_filters():
         ["invoice.pdf", "rc.pdf"],
     )
     assert submit_response.status_code == 200
+    claim_id = submit_response.json()["claim_id"]
     client.post("/claims/process")
 
-    search_response = client.get("/claims/CLM2001")
+    search_response = client.get(f"/claims/{claim_id}")
     assert search_response.status_code == 200
     assert search_response.json()["policy_type"] == "Motor"
 
@@ -110,7 +109,7 @@ def test_search_update_delete_and_filters():
         "nominee_relationship": "",
     }
     update_files = [("documents", ("invoice.pdf", b"dummy-content", "application/pdf")), ("documents", ("rc.pdf", b"dummy-content", "application/pdf"))]
-    update_response = client.put("/claims/CLM2001", data=update_data, files=update_files)
+    update_response = client.put(f"/claims/{claim_id}", data=update_data, files=update_files)
     assert update_response.status_code == 200
     assert update_response.json()["customer_name"] == "Rahul Sharma Updated"
 
@@ -119,18 +118,17 @@ def test_search_update_delete_and_filters():
 
     high_risk_response = client.get("/claims/high-risk")
     assert high_risk_response.status_code == 200
-    assert any(item["claim_id"] == "CLM2001" for item in high_risk_response.json())
+    assert any(item["claim_id"] == claim_id for item in high_risk_response.json())
 
-    delete_response = client.delete("/claims/CLM2001")
+    delete_response = client.delete(f"/claims/{claim_id}")
     assert delete_response.status_code == 200
 
-    not_found_response = client.get("/claims/CLM2001")
+    not_found_response = client.get(f"/claims/{claim_id}")
     assert not_found_response.status_code == 404
 
 
 def test_life_policy_submission():
     response = submit_claim(
-        "CLM3001",
         "Life",
         {
             "customer_age": 52,

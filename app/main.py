@@ -3,6 +3,7 @@ import json
 import logging
 from logging.handlers import RotatingFileHandler
 from pathlib import Path
+from typing import List, Optional
 
 from fastapi import Depends, FastAPI, File, Form, HTTPException, Request, UploadFile
 from fastapi.exceptions import RequestValidationError
@@ -30,6 +31,7 @@ from app.schemas import (
 from app.services import (
     build_summary,
     delete_processed_claim,
+    generate_claim_id,
     get_processed_claim_or_404,
     high_risk_claims,
     list_processed_claims,
@@ -136,21 +138,21 @@ def health_check():
 
 @app.post("/claims/submit", response_model=UnprocessedClaimItem)
 async def create_unprocessed_claim(
-    claim_id: str = Form(...),
     customer_name: str = Form(...),
     customer_age: int = Form(...),
     policy_type: str = Form(...),
     claim_amount: int = Form(...),
     previous_claims: int = Form(0),
-    hospital: str | None = Form(None),
-    vehicle_number: str | None = Form(None),
-    garage_name: str | None = Form(None),
-    nominee_name: str | None = Form(None),
-    nominee_relationship: str | None = Form(None),
+    hospital: Optional[str] = Form(None),
+    vehicle_number: Optional[str] = Form(None),
+    garage_name: Optional[str] = Form(None),
+    nominee_name: Optional[str] = Form(None),
+    nominee_relationship: Optional[str] = Form(None),
     documents: list[UploadFile] = File(...),
     unprocessed_db: Session = Depends(get_unprocessed_db),
     processed_db: Session = Depends(get_processed_db),
 ):
+    claim_id = generate_claim_id(unprocessed_db, processed_db)
     payload = ClaimSubmit(
         claim_id=claim_id,
         customer_name=customer_name,
@@ -190,9 +192,9 @@ def process_claims(
 def get_claims(
     page: int = 1,
     size: int = 10,
-    decision: str | None = None,
-    policy_type: str | None = None,
-    risk_category: str | None = None,
+    decision: Optional[str] = None,
+    policy_type: Optional[str] = None,
+    risk_category: Optional[str] = None,
     db: Session = Depends(get_processed_db),
 ):
     items, total = list_processed_claims(
@@ -229,12 +231,12 @@ async def update_claim(
     policy_type: str = Form(...),
     claim_amount: int = Form(...),
     previous_claims: int = Form(0),
-    hospital: str | None = Form(None),
-    vehicle_number: str | None = Form(None),
-    garage_name: str | None = Form(None),
-    nominee_name: str | None = Form(None),
-    nominee_relationship: str | None = Form(None),
-    documents: list[UploadFile] | None = File(None),
+    hospital: Optional[str] = Form(None),
+    vehicle_number: Optional[str] = Form(None),
+    garage_name: Optional[str] = Form(None),
+    nominee_name: Optional[str] = Form(None),
+    nominee_relationship: Optional[str] = Form(None),
+    documents: Optional[List[UploadFile]] = File(None),
     db: Session = Depends(get_processed_db),
 ):
     existing = get_processed_claim_or_404(db, claim_id)
